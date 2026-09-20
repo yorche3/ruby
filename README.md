@@ -9,6 +9,7 @@ Proyectos en **Ruby**, con scripts simples ejecutados mediante el intérprete `r
 | Módulo | Descripción |
 | ------ | ----------- |
 | [`core/foundations/`](core/foundations/) | **Fase 0 — Fundamentos**: `helloworld`, `hellouser`, `unit_test/calculator`, `numbers` |
+| [`core/algorithms/`](core/algorithms/) | **Fase 1 — Algoritmos Puros**: `naive_sort` |
 
 ---
 
@@ -30,6 +31,11 @@ bundle exec rspec
 
 # Numbers tests
 cd core/foundations/numbers
+bundle install
+bundle exec rspec
+
+# Naive Sort tests
+cd core/algorithms/naive_sort
 bundle install
 bundle exec rspec
 ```
