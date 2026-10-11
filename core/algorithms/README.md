@@ -11,6 +11,7 @@ Los módulos de esta fase trabajan sobre **arrays mutables**, que se ordenan *in
 | Módulo | Especificación | Enfoque | Tests | Estado |
 |--------|---------------|---------|:-----:|:------:|
 | [`naive_sort/`](naive_sort/) | [05_Naive_Sort](https://yorche3.github.io/programming_languages/core/algorithms/05_Naive_Sort/) | `bundle exec rspec` (RSpec + Bundler) | 24 | ✅ |
+| [`data_structures_basics/`](data_structures_basics/) | [06_Data_Structures_Basics](https://yorche3.github.io/programming_languages/core/algorithms/06_Data_Structures_Basics/) | `bundle exec rspec` (RSpec + Bundler) | 4 | ✅ |
 
 ---
 
@@ -18,14 +19,37 @@ Los módulos de esta fase trabajan sobre **arrays mutables**, que se ordenan *in
 
 ```text
 algorithms/
-└── naive_sort/                  # 05_Naive_Sort
-    ├── .gitignore               # Ignora .bundle/, vendor/bundle/ y Gemfile.lock
-    ├── .rspec                   # --default-path test, --pattern "**/*_tests.rb"
-    ├── Gemfile                  # Gema rspec
+├── naive_sort/                  # 05_Naive_Sort
+│   ├── .gitignore               # Ignora .bundle/, vendor/bundle/ y Gemfile.lock
+│   ├── .rspec                   # --default-path test, --pattern "**/*_tests.rb"
+│   ├── Gemfile                  # Gema rspec
+│   ├── src/
+│   │   └── naive_sort.rb        # Módulo NaiveSort: 3 métodos
+│   ├── test/
+│   │   └── naive_sort_tests.rb  # 3 ejemplos × 8 casos
+│   └── README.md
+└── data_structures_basics/      # 06_Data_Structures_Basics
+    ├── .rspec                   # --require spec_helper
+    ├── Gemfile                  # Configuración Bundler referenciando gemspec
+    ├── Gemfile.lock             # Versiones fijadas de gemas
+    ├── Rakefile                 # Tareas Rake (:spec)
+    ├── data_structures_basics.gemspec # Metadatos de la gema
+    ├── lib/
+    │   ├── data_structures_basics.rb # Punto de entrada principal
+    │   └── data_structures_basics/
+    │       ├── node.rb          # Celda enlazada compartida
+    │       ├── linked_list.rb   # Lista simplemente enlazada
+    │       ├── stack.rb         # Pila LIFO independiente
+    │       ├── queue.rb         # Cola FIFO independiente
+    │       └── version.rb       # Versión del módulo
+    ├── spec/
+    │   ├── spec_helper.rb       # Configuración RSpec
+    │   ├── node_spec.rb         # 1 ejemplo
+    │   ├── linked_list_spec.rb  # 1 ejemplo
+    │   ├── stack_spec.rb        # 1 ejemplo
+    │   └── queue_spec.rb        # 1 ejemplo
     ├── src/
-    │   └── naive_sort.rb        # Módulo NaiveSort: 3 métodos
-    ├── test/
-    │   └── naive_sort_tests.rb  # 3 ejemplos × 8 casos
+    │   └── data_structures_basics.rb # Puente de compatibilidad
     └── README.md
 ```
 
@@ -37,19 +61,19 @@ algorithms/
 |---------------|-------------|
 | **Runtime** | Ruby 3.0+ (en este entorno, 3.4.3 con RVM); intérprete directo de los `.rb` |
 | **CLI** | `bundle exec rspec`, ejecutado desde la raíz del proyecto |
-| **Andamiaje** | ✅ Estructura manual (`mkdir -p src test` + `bundle init`), la que ya usan [`foundations/numbers/`](../foundations/numbers/) y `foundations/unit_test/calculator/` |
+| **Andamiaje** | ✅ Estructura manual (`mkdir -p src test` + `bundle init`) o estructura de gema con `.gemspec` |
 | **Framework de tests** | RSpec declarado en el `Gemfile` (`gem 'rspec', '~> 3.13'`), instalado con `bundle install` |
-| **Runner** | RSpec descubre `test/**/*_tests.rb` por el patrón de `.rspec`; no hay `run_tests.rb` |
-| **Separación** | `src/` (módulo) ↔ `test/` (suites) |
-| **Módulo fuente** | Un módulo con métodos de módulo (`module NaiveSort` + `def self.*`), como `Numbers` en `numbers/` |
-| **API** | Una función por algoritmo, con el array recibido y devuelto |
-| **Naming** | `snake_case` idéntico al de la especificación (`selection_sort`), que además es la convención de Ruby |
-| **Mutabilidad** | Los arrays son mutables y los tres algoritmos ordenan *in-place*; la suite ordena una copia (`dup`) por caso |
-| **Nulabilidad** | `nil` como indicador de fallo (no se lanzan excepciones); el array vacío es `[]` |
-| **Mensajes de aserción** | `expect(...).to eq(...), "mensaje"` con el mensaje del contrato (`selection_sort should sort an unsorted array`) |
-| **Verificación estática** | `ruby -w -c <archivo>` → `Syntax OK` sin warnings; el módulo no declara linter |
-| **Artefactos** | `.bundle/`, `vendor/bundle/` y `Gemfile.lock` — ignorados por el `.gitignore` del módulo |
-| **Particularidades** | `&&` sí cortocircuita (la guarda `j >= 0` protege `arr[j]`); rangos exclusivos `(0...n-1)` para los `for` del pseudocódigo; asignación paralela para intercambiar |
+| **Runner** | RSpec descubre `test/**/*_tests.rb` o `spec/**/*_spec.rb`; no hay `run_tests.rb` |
+| **Separación** | `src/` (módulo) ↔ `test/` (suites), o `lib/` ↔ `spec/` con puente en `src/` |
+| **Módulo fuente** | Clases/módulos idiomáticos bajo namespace `DataStructuresBasics` o `NaiveSort` |
+| **API** | Métodos orientados a objetos o funciones de módulo, según especificación |
+| **Naming** | `snake_case` idéntico al de la especificación, con convenciones de métodos Ruby (`empty?`) |
+| **Mutabilidad** | Arrays/estructuras mutables gestionadas *in-place* |
+| **Nulabilidad** | `nil` como indicador de nodo ausente; `-1` como valor de error para operaciones enteras |
+| **Mensajes de aserción** | RSpec `expect(...).to eq(...)` o aserciones contextuales de comportamiento |
+| **Verificación estática** | `ruby -w -c <archivo>` → `Syntax OK` sin warnings; los módulos no declaran linter |
+| **Artefactos** | `.bundle/`, `vendor/bundle/` y `Gemfile.lock` — ignorados por `.gitignore` |
+| **Particularidades** | Enlace manual de celdas `Node` sin delegar en colecciones estándar de Ruby |
 
 ---
 
@@ -58,6 +82,11 @@ algorithms/
 ```bash
 # Naive Sort Tests
 cd naive_sort
+bundle install
+bundle exec rspec
+
+# Data Structures Basics Tests
+cd ../data_structures_basics
 bundle install
 bundle exec rspec
 ```
