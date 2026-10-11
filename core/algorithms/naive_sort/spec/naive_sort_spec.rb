@@ -7,8 +7,6 @@
 # Aislamiento: los arrays de Ruby son mutables y los tres algoritmos ordenan
 # in-place, así que cada caso ordena una copia del fixture compartido.
 
-require_relative '../src/naive_sort'
-
 STANDARD_INPUT = [5, 2, 9, 1, 5, 6].freeze
 STANDARD_OUTPUT = [1, 2, 5, 5, 6, 9].freeze
 

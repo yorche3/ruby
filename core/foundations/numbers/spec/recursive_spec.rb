@@ -1,4 +1,5 @@
-require_relative '../src/numbers'
+# Suites separadas por enfoque: esta cubre la recursiva directa (_rec) y la de
+# acumulador (_acc).
 
 RSpec.describe 'Recursive' do
   describe '.sum_of_first_n_rec' do

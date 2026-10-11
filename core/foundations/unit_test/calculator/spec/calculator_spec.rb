@@ -1,5 +1,3 @@
-require_relative '../src/calculator'
-
 RSpec.describe Calculator do
   describe '.addition' do
     it 'returns the sum of two numbers' do
