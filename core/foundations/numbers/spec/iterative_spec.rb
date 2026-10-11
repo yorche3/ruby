@@ -1,4 +1,4 @@
-require_relative '../src/numbers'
+# Suites separadas por enfoque: esta cubre la iterativa (_ite).
 
 RSpec.describe 'Iterative' do
   describe '.sum_of_first_n_ite' do

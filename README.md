@@ -9,7 +9,7 @@ Proyectos en **Ruby**, con scripts simples ejecutados mediante el intérprete `r
 | Módulo | Descripción |
 | ------ | ----------- |
 | [`core/foundations/`](core/foundations/) | **Fase 0 — Fundamentos**: `helloworld`, `hellouser`, `unit_test/calculator`, `numbers` |
-| [`core/algorithms/`](core/algorithms/) | **Fase 1 — Algoritmos Puros**: `naive_sort` |
+| [`core/algorithms/`](core/algorithms/) | **Fase 1 — Algoritmos Puros**: `naive_sort`, `data_structures_basics` |
 
 ---
 
@@ -36,6 +36,11 @@ bundle exec rspec
 
 # Naive Sort tests
 cd core/algorithms/naive_sort
+bundle install
+bundle exec rspec
+
+# Data Structures Basics tests
+cd core/algorithms/data_structures_basics
 bundle install
 bundle exec rspec
 ```
@@ -76,9 +81,9 @@ ruby <File>.rb
 
 ### 2. Proyecto tipo librería con pruebas (Bundler + RSpec)
 
-**ES:** Los proyectos `calculator` y `numbers` separan el código fuente en `src/` y las pruebas en `test/`. Cada proyecto declara RSpec en su propio `Gemfile`, fija las versiones mediante `Gemfile.lock` y configura el descubrimiento con `.rspec`.
+**ES:** Los proyectos `calculator`, `numbers`, `naive_sort` y `data_structures_basics` separan el código fuente (`src/` o `lib/`) y las pruebas (`test/` o `spec/`). Cada proyecto gestiona dependencias mediante Bundler (`Gemfile` / `.gemspec`), fija versiones en `Gemfile.lock` y configura la ejecución con `.rspec`.
 
-**EN:** The `calculator` and `numbers` projects separate source code into `src/` and tests into `test/`. Each project declares RSpec in its own `Gemfile`, locks versions through `Gemfile.lock`, and configures discovery with `.rspec`.
+**EN:** The `calculator`, `numbers`, `naive_sort`, and `data_structures_basics` projects separate source code (`src/` or `lib/`) and tests (`test/` or `spec/`). Each project manages dependencies via Bundler (`Gemfile` / `.gemspec`), locks versions in `Gemfile.lock`, and configures execution with `.rspec`.
 
 ```bash
 bundle install
