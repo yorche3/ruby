@@ -11,27 +11,35 @@ module DataStructuresBasics
 
     # Esqueleto: apila. No devuelve valor.
     def push(value)
-      nil
+      new_node = Node.new(value)
+      new_node.next = @top
+      @top = new_node
+      @count += 1
     end
 
     # Esqueleto: desapila, o -1 cuando la pila está vacía.
     def pop
-      -1
+      return -1 if @top.nil?
+      value = @top.value
+      @top = @top.next
+      @count -= 1
+      value
     end
 
     # Esqueleto: mira la cima, o -1 cuando la pila está vacía.
     def peek
-      -1
+      return -1 if @top.nil?
+      @top.value
     end
 
     # Esqueleto: true solo si no hay elementos.
     def empty?
-      false
+      @count.zero?
     end
 
     # Esqueleto: número de elementos (0 con la pila recién creada).
     def size
-      0
+      @count
     end
   end
 end

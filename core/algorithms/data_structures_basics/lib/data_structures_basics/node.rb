@@ -13,17 +13,17 @@ module DataStructuresBasics
 
     # Esqueleto: valor de la celda.
     def value
-      -1
+      @value
     end
 
     # Esqueleto: enlace siguiente. Es el único `nil` del contrato: es un enlace.
     def next
-      nil
+      @next
     end
 
     # Esqueleto: cambia el enlace siguiente.
     def next=(node)
-      nil
+      @next = node
     end
   end
 end
