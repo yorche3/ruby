@@ -8,13 +8,13 @@ Implementación de la especificación [01_Hello_World](https://yorche3.github.io
 
 | Archivo | Propósito |
 |---------|-----------|
-| [`helloworld.rb`](helloworld.rb) | Código fuente: imprime `"Hello, World! from Ruby"` en la salida estándar. |
+| [`hello_world.rb`](hello_world.rb) | Código fuente: imprime `"Hello, World! from Ruby!"` en la salida estándar. |
 
 **Estructura de directorios esperada:**
 
 ```text
 helloworld/
-├── helloworld.rb    # Código fuente
+├── hello_world.rb    # Código fuente
 └── README.md        # Este archivo
 ```
 
@@ -34,7 +34,7 @@ helloworld/
    mkdir -p ruby/core/foundations/helloworld
    ```
 
-2. Escribir el archivo `helloworld.rb` con el código fuente.
+2. Escribir el archivo `hello_world.rb` con el código fuente.
 
 3. No se necesita ningún paso adicional de construcción o vinculación de dependencias.
 
@@ -45,13 +45,13 @@ helloworld/
 No se requieren archivos de configuración de build. El programa se ejecuta directamente con el intérprete `ruby`.
 
 ```ruby
-puts "Hello, World! from Ruby"
+puts "Hello, World! from Ruby!"
 ```
 
 | Elemento | Propósito |
 |----------|-----------|
 | `puts` | Método del módulo `Kernel` que escribe su argumento en `stdout` añadiendo automáticamente un salto de línea (`\n`). |
-| `"Hello, World! from Ruby"` | Argumento: la cadena a imprimir. |
+| `"Hello, World! from Ruby!"` | Argumento: la cadena a imprimir. |
 
 > **ES:** `puts` añade un salto de línea al final; si no se desea salto de línea se utiliza `print`. Los paréntesis son opcionales en las llamadas a métodos en Ruby cuando no hay ambigüedad.
 > **EN:** `puts` appends a newline at the end; if no newline is desired, `print` is used. Parentheses are optional in method calls in Ruby when there is no ambiguity.
@@ -71,13 +71,13 @@ ruby -v
 
 ```bash
 cd ruby/core/foundations/helloworld
-ruby helloworld.rb
+ruby hello_world.rb
 ```
 
 ### Comprobar sintaxis sin ejecutar (opcional) / Check syntax without running (optional)
 
 ```bash
-ruby -c helloworld.rb
+ruby -c hello_world.rb
 ```
 
 ### Salida esperada / Expected output
