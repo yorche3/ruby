@@ -10,13 +10,13 @@ Solicita un nombre al usuario por la entrada estándar (estilo prompt) y saluda.
 
 | Archivo | Propósito |
 |---------|-----------|
-| [`hellouser.rb`](hellouser.rb) | Código fuente: solicita un nombre al usuario y saluda. |
+| [`hello_user.rb`](hello_user.rb) | Código fuente: solicita un nombre al usuario y saluda. |
 
 **Estructura de directorios esperada:**
 
 ```text
 hellouser/
-├── hellouser.rb     # Código fuente
+├── hello_user.rb     # Código fuente
 └── README.md        # Este archivo
 ```
 
@@ -44,7 +44,7 @@ hellouser/
    mkdir -p ruby/core/foundations/hellouser
    ```
 
-2. Escribir el archivo `hellouser.rb` con el código fuente.
+2. Escribir el archivo `hello_user.rb` con el código fuente.
 
 3. No se necesita ningún paso adicional de construcción o vinculación de dependencias.
 
@@ -102,7 +102,7 @@ ruby -v
 
 ```bash
 cd ruby/core/foundations/hellouser
-ruby hellouser.rb
+ruby hello_user.rb
 ```
 
 **ES:** El programa muestra el prompt y espera a que escribas tu nombre y presiones Enter.  
@@ -116,8 +116,8 @@ Ada
 Hello, Ada!
 ```
 
-> **ES:** También admite entrada redirigida: `printf 'Ada\n' | ruby hellouser.rb` produce el mismo saludo.  
-> **EN:** It also accepts redirected input: `printf 'Ada\n' | ruby hellouser.rb` produces the same greeting.
+> **ES:** También admite entrada redirigida: `printf 'Ada\n' | ruby hello_user.rb` produce el mismo saludo.  
+> **EN:** It also accepts redirected input: `printf 'Ada\n' | ruby hello_user.rb` produces the same greeting.
 
 ---
 
