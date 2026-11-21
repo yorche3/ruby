@@ -12,6 +12,7 @@ Los módulos de esta fase trabajan sobre **arrays mutables**, que se ordenan *in
 |--------|---------------|---------|:-----:|:------:|
 | [`naive_sort/`](naive_sort/) | [05_Naive_Sort](https://yorche3.github.io/programming_languages/core/algorithms/05_Naive_Sort/) | `bundle exec rspec` (RSpec + Bundler) | 24 | ✅ |
 | [`data_structures_basics/`](data_structures_basics/) | [06_Data_Structures_Basics](https://yorche3.github.io/programming_languages/core/algorithms/06_Data_Structures_Basics/) | `bundle exec rspec` (RSpec + Bundler) | 4 | ✅ |
+| [`data_structures_advanced/`](data_structures_advanced/) | [07_Data_Structures_Advanced](https://yorche3.github.io/programming_languages/core/algorithms/07_Data_Structures_Advanced/) | `bundle exec rspec` (RSpec + Bundler) | 23 | ✅ |
 
 ---
 
@@ -28,7 +29,7 @@ algorithms/
 │   ├── test/
 │   │   └── naive_sort_tests.rb  # 3 ejemplos × 8 casos
 │   └── README.md
-└── data_structures_basics/      # 06_Data_Structures_Basics
+├── data_structures_basics/      # 06_Data_Structures_Basics
     ├── .rspec                   # --require spec_helper
     ├── Gemfile                  # Configuración Bundler referenciando gemspec
     ├── Gemfile.lock             # Versiones fijadas de gemas
@@ -51,6 +52,29 @@ algorithms/
     ├── src/
     │   └── data_structures_basics.rb # Puente de compatibilidad
     └── README.md
+└── data_structures_advanced/    # 07_Data_Structures_Advanced
+    ├── .gitignore               # Ignora .bundle/, vendor/bundle/ y Gemfile.lock
+    ├── .rspec                   # --require spec_helper
+    ├── Gemfile                  # Configuración Bundler referenciando gemspec
+    ├── Gemfile.lock             # Versiones fijadas de gemas
+    ├── Rakefile                 # Tareas Rake (:spec)
+    ├── data_structures_advanced.gemspec # Metadatos de la gema
+    ├── lib/
+    │   ├── data_structures_advanced.rb # Punto de entrada principal
+    │   └── data_structures_advanced/
+    │       ├── binary_tree.rb   # Árbol binario de búsqueda
+    │       ├── graph.rb         # Grafo dirigido con registro enlazado
+    │       ├── graph_node.rb    # Nodo de grafo con lista de vecinos
+    │       ├── node.rb          # Clase base Node con valor
+    │       └── tree_node.rb     # Nodo de árbol binario
+    ├── spec/
+    │   ├── binary_tree_spec.rb  # 7 ejemplos
+    │   ├── graph_spec.rb        # 11 ejemplos
+    │   ├── spec_helper.rb       # Configuración RSpec
+    │   └── tree_node_spec.rb    # 5 ejemplos
+    ├── src/
+    │   └── data_structures_advanced.rb # Puente de compatibilidad
+    └── README.md
 ```
 
 ---
@@ -65,7 +89,7 @@ algorithms/
 | **Framework de tests** | RSpec declarado en el `Gemfile` (`gem 'rspec', '~> 3.13'`), instalado con `bundle install` |
 | **Runner** | RSpec descubre `test/**/*_tests.rb` o `spec/**/*_spec.rb`; no hay `run_tests.rb` |
 | **Separación** | `src/` (módulo) ↔ `test/` (suites), o `lib/` ↔ `spec/` con puente en `src/` |
-| **Módulo fuente** | Clases/módulos idiomáticos bajo namespace `DataStructuresBasics` o `NaiveSort` |
+| **Módulo fuente** | Clases/módulos idiomáticos bajo namespace `DataStructuresAdvanced`, `DataStructuresBasics` o `NaiveSort` |
 | **API** | Métodos orientados a objetos o funciones de módulo, según especificación |
 | **Naming** | `snake_case` idéntico al de la especificación, con convenciones de métodos Ruby (`empty?`) |
 | **Mutabilidad** | Arrays/estructuras mutables gestionadas *in-place* |
@@ -87,6 +111,11 @@ bundle exec rspec
 
 # Data Structures Basics Tests
 cd ../data_structures_basics
+bundle install
+bundle exec rspec
+
+# Data Structures Advanced Tests
+cd ../data_structures_advanced
 bundle install
 bundle exec rspec
 ```
