@@ -2,24 +2,12 @@
 
 module DataStructuresAdvanced
   class TreeNode < Node
+    attr_accessor :left, :right
+
     def initialize(value)
-      nil
-    end
-
-    def left
-      nil
-    end
-
-    def right
-      nil
-    end
-
-    def left=(node)
-      nil
-    end
-
-    def right=(node)
-      nil
+      super(value)
+      @left = nil
+      @right = nil
     end
   end
 end

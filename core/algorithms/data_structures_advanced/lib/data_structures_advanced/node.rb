@@ -2,12 +2,10 @@
 
 module DataStructuresAdvanced
   class Node
-    def initialize(value)
-      nil
-    end
+    attr_reader :value
 
-    def value
-      nil
+    def initialize(value)
+      @value = value
     end
   end
 end
