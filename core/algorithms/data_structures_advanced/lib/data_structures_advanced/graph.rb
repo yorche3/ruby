@@ -22,7 +22,7 @@ module DataStructuresAdvanced
       u_vertex = find_vertex(u)
       return false if u_vertex.nil?
       return false if find_vertex(v).nil?
-      return true if u_vertex.neighbors.include?(v)
+      return true if has_neighbor?(u_vertex.neighbors, v)
 
       position = u_vertex.neighbors.index { |neighbor| v < neighbor }
       position ? u_vertex.neighbors.insert(position, v) : u_vertex.neighbors << v
@@ -33,7 +33,19 @@ module DataStructuresAdvanced
     def has_edge?(u, v)
       u_vertex = find_vertex(u)
       return false if u_vertex.nil?
-      u_vertex.neighbors.include?(v)
+
+      has_neighbor?(u_vertex.neighbors, v)
+    end
+
+    # Manual lookup: la adyacencia se recorre elemento a elemento.
+    def has_neighbor?(neighbors, label)
+      index = 0
+      while index < neighbors.length
+        return true if neighbors[index] == label
+
+        index += 1
+      end
+      false
     end
 
     def neighbors(u)
